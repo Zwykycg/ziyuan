@@ -1,1 +1,42 @@
-hello the world!
+#include<iostream.h>
+#include<stdio.h>
+class complex
+{public:
+complex(){real=0;imag=0;}
+complex(int r,int i){real=r;imag=i;}
+
+complex operator+(complex&c2)
+{return complex(real+c2.real,imag+c2.imag);}
+complex operator-(complex&c2)
+{return complex(real-c2.real,imag-c2.imag);}
+ 
+complex operator++(){real++;imag++;return *this;}
+complex operator++(int){real++;imag++;return*this;}
+
+friend ostream&operator<<(ostream&,complex&)
+friend istream&operator>>(istream&,complex&)
+
+
+private:
+	int real;int imag;
+	};
+
+ostream&operator<<(ostream&output,complex&c)
+{output<<c.real<<c.imag;
+return output;
+}
+istream&operator>>(istream&input,complex&c)
+{input>>c.real>>c.imag;
+return input;
+}
+
+int  main()
+{complex c1,c2,c3;
+cin>>c1>>c2;
+c3=c1+c2;
+cout<<c1<<c2<<c3;
+c3++;
+cout<<c3;
+++c3;
+cout<<c3;
+}
